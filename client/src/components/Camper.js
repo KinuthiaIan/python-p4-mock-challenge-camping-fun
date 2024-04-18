@@ -24,13 +24,13 @@ function Camper() {
     });
   }, [id]);
 
-  function handleAddSignup(newSignup) {
+  function handleAddActivity(newActivity) {
     setCamper({
       error,
       status,
       data: {
         ...camper,
-        signups: [...camper.signups, newSignup],
+        activities: [...camper.activities, newActivity],
       },
     });
   }
@@ -42,15 +42,14 @@ function Camper() {
     <div>
       <h2>{camper.name}'s Activities</h2>
       <ul>
-        {camper.signups.map((signup) => (
-          <li key={signup.activity.id}>
-            {signup.activity.name} | Difficulty: {signup.activity.difficulty} |
-            Time: {signup.time}
+        {camper.activities.map((activity) => (
+          <li key={activity.id}>
+            {activity.name} | Difficulty: {activity.difficulty}
           </li>
         ))}
       </ul>
       <hr />
-      <NewSignup onAddSignup={handleAddSignup} camperId={camper.id} />
+      <NewSignup onAddActivity={handleAddActivity} camperId={camper.id} />
     </div>
   );
 }
